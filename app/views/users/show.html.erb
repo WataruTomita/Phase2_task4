@@ -25,7 +25,7 @@
       <% else %>
         <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
       <% end %>
-      <%= link_to "show", user_path(user) %>
+      <%= link_to "follower show", followings_user_path(user) %>
     </p>
   <% end %>
 <h2>フォロワー一覧</h2>
@@ -40,6 +40,6 @@
       <% else %>
         <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
       <% end %>
-      <%= link_to "show", user_path(user) %>
+      <%= link_to "follower show", followers_user_path(user) %>
     </p>
   <% end %>
