@@ -12,19 +12,3 @@
     </div>
   </div>
 </div>
-
-<% if user_signed_in? %>
-  <p><%= link_to "マイページへ", user_path(current_user) %></p>
-  <h2>ユーザー一覧画面</h2>
-  <% User.all.each do |user| %>
-    <p>
-      <%= "NAME: #{user.name}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-<% end %>
