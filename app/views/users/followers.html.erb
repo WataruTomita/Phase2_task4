@@ -1,8 +1,5 @@
 <h2>フォロワー一覧</h2>
-  <%#= current_userを含めて表示 %>
   <% @user.follower_user.each do |user| %>
-  <%#= current_userは除いて表示 %>
-  <%# @user.following_user.where.not(id: current_user.id).each do |user| %>
     <p>
       <%= "name: #{user.name}" %>
       <% if current_user.following?(user) %>

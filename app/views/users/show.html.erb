@@ -12,34 +12,3 @@
     </div>
   </div>
 </div>
-
-<h2>フォロー一覧</h2>
-  <%#= current_userを含めて表示 %>
-  <% @user.follower_user.each do |user| %>
-  <%#= current_userは除いて表示 %>
-  <%# @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "name: #{user.name}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "follower show", followings_user_path(user) %>
-    </p>
-  <% end %>
-<h2>フォロワー一覧</h2>
-  <%#= current_userを含めて表示 %>
-  <% @user.follower_user.each do |user| %>
-  <%#= current_userは除いて表示 %>
-  <%# @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "name: #{user.name}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "follower show", followers_user_path(user) %>
-    </p>
-  <% end %>
