@@ -10,11 +10,13 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update] 
+  # /users/:id/followings or followersのURLを叩くための部分。memberでfollow-以下の:idを作る
   resources :users do
     get :followings, on: :member
     get :followers, on: :member
   end
 
+  # relationshipsを叩いてフォローしたり解除したりする部分
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 end
