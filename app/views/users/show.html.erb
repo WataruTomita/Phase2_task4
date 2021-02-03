@@ -12,3 +12,14 @@
     </div>
   </div>
 </div>
+followed
+<p><%= @user.follower.count %></p>
+follower
+<p><%= @user.followed.count %></p>
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'out', unfollow_path(@user.id), method: :post %>
+  <% else %>
+    <%= link_to 'in', follow_path(@user.id), method: :post %>
+  <% end %>
+<% end %>
